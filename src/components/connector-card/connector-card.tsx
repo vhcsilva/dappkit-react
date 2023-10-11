@@ -11,7 +11,9 @@ export default function ConnectorCard({
                                         setError,
                                         error,
                                         chainIds = [],
-                                        activeChainId, onConnectorConnect, onConnectorDisconnect,
+                                        activeChainId,
+                                        onConnectorConnect,
+                                        onConnectorDisconnect,
                                       }: ConnectorCardProps) {
   const style: CSSProperties = {
     display: "flex",

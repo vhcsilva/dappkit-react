@@ -4,6 +4,7 @@ import type {provider as Provider} from "web3-core";
 import CoinbaseCard from "./components/connector-card/coinbase-card/coinbase-card";
 import MetamaskCard from "./components/connector-card/metamask-card/metamask-card";
 import {useDappkit, useDappkitConnectionInfo} from "./custom-hooks/use-dappkit";
+import GnosisSafeCard from "./components/connector-card/gnosis-safe-card/gnosis-safe-card";
 
 function App() {
 
@@ -21,6 +22,7 @@ function App() {
 
   async function onConnectorDisconnect() {
     setProvider(null);
+    window.location.reload();
   }
 
   return (
@@ -28,6 +30,7 @@ function App() {
       <header className="App-header">
         <CoinbaseCard onConnectorConnect={onConnectorConnect} onConnectorDisconnect={onConnectorDisconnect} />
         <MetamaskCard onConnectorConnect={onConnectorConnect} onConnectorDisconnect={onConnectorDisconnect}/>
+        <GnosisSafeCard onConnectorConnect={onConnectorConnect} onConnectorDisconnect={onConnectorDisconnect}/>
       </header>
 
       <div className="address">{address}</div>

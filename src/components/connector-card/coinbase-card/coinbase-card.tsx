@@ -7,7 +7,7 @@ import {CustomConnectorCardProps} from "../../../types/connector-card";
 import {useDappkitConnectionInfo} from "../../../custom-hooks/use-dappkit";
 
 export default function CoinbaseCard({onConnectorConnect, onConnectorDisconnect}: CustomConnectorCardProps) {
-  const {isActivating, error, setError} = useConnectorHooks(hooks);
+  const {isActivating, isActive, error, setError} = useConnectorHooks(hooks);
   const {chainId, connected} = useDappkitConnectionInfo();
 
   useConnectEagerly(coinbaseWallet);
@@ -18,7 +18,7 @@ export default function CoinbaseCard({onConnectorConnect, onConnectorDisconnect}
                         isActivating={isActivating}
                         onConnectorConnect={onConnectorConnect}
                         onConnectorDisconnect={onConnectorDisconnect}
-                        isActive={connected}
+                        isActive={connected && isActive}
                         setError={setError}
                         error={error} />
 }

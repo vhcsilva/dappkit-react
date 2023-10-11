@@ -44,18 +44,15 @@ export default function ConnectWith({activeChainId, setError, connector, chainId
       await switchChain(desiredChainId)
   }
 
-  useEffect(() => {
-    if ((activeChainId) && (!desiredChainId || desiredChainId === -1))
-      setDesiredChainId(activeChainId);
-  }, [activeChainId, desiredChainId]);
-
   const style: CSSProperties = {
     display: "flex",
     flexDirection: "column",
   }
 
   return <div style={style}>
-    <ChainSelector activeChainId={activeChainId} chainIds={chainIds} switchChainId={switchChain} />
+    <ChainSelector activeChainId={desiredChainId || -1}
+                   chainIds={chainIds}
+                   onSelected={id => setDesiredChainId(id)} />
 
     <div style={{marginBottom: "1rem"}}>
       {isActive

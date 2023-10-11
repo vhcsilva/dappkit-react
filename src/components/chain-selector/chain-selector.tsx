@@ -1,8 +1,8 @@
 import {ChainSelectorProps} from "../../types/chain-selector";
 
-export default function ChainSelector({activeChainId, switchChainId, chainIds}: ChainSelectorProps) {
+export default function ChainSelector({activeChainId, onSelected, chainIds}: ChainSelectorProps) {
   return <select value={activeChainId}
-                 onChange={(e) => switchChainId(Number(e.target.value))}>
+                 onChange={(e) => onSelected(Number(e.target.value))}>
       <option hidden value={-2}>Select chain</option>
       <option value={-1}>Default</option>
     {chainIds.map(({name, id}) => <option key={id} value={id}>{name}</option>)}

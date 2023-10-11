@@ -7,7 +7,7 @@ import {useDappkitConnectionInfo} from "../../../custom-hooks/use-dappkit";
 import {gnosisSafe, hooks} from "../../../connectors/gnosis-safe";
 
 export default function GnosisSafeCard({onConnectorConnect, onConnectorDisconnect}: CustomConnectorCardProps) {
-  const {isActivating, error, setError} = useConnectorHooks(hooks);
+  const {isActivating, isActive, error, setError} = useConnectorHooks(hooks);
   const {chainId, connected} = useDappkitConnectionInfo();
 
   useConnectEagerly(gnosisSafe);
@@ -18,7 +18,7 @@ export default function GnosisSafeCard({onConnectorConnect, onConnectorDisconnec
                         isActivating={isActivating}
                         onConnectorConnect={onConnectorConnect}
                         onConnectorDisconnect={onConnectorDisconnect}
-                        isActive={connected}
+                        isActive={connected && isActive}
                         setError={setError}
                         error={error} />
 }

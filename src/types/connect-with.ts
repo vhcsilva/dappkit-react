@@ -10,4 +10,4 @@ export type Props = {
   setError: (e?: Error) => void;
 };
 
-export type ConnectWithProps = Props & Omit<ChainSelectorProps, "switchChainId"> & StatusIndicatorProps;
+export type ConnectWithProps = Props & Omit<ChainSelectorProps, "onSelected"> & StatusIndicatorProps;

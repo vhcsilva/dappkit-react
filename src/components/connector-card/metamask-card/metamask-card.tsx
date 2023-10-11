@@ -7,7 +7,7 @@ import {metamaskWallet, hooks} from "../../../connectors/metamask-wallet";
 import {useDappkitConnectionInfo} from "../../../custom-hooks/use-dappkit";
 
 export default function MetamaskCard({onConnectorConnect, onConnectorDisconnect}: CustomConnectorCardProps) {
-  const {isActivating, error, setError} = useConnectorHooks(hooks);
+  const {isActivating, isActive, error, setError} = useConnectorHooks(hooks);
   const {chainId, connected} = useDappkitConnectionInfo();
 
   useConnectEagerly(metamaskWallet);
@@ -18,7 +18,7 @@ export default function MetamaskCard({onConnectorConnect, onConnectorDisconnect}
                         isActivating={isActivating}
                         onConnectorConnect={onConnectorConnect}
                         onConnectorDisconnect={onConnectorDisconnect}
-                        isActive={connected}
+                        isActive={connected && isActive}
                         setError={setError}
                         error={error} />
 }

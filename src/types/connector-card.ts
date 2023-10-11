@@ -8,4 +8,4 @@ export type CustomConnectorCardProps = {
   onConnectorDisconnect(): void;
 }
 
-export type ConnectorCardProps = ConnectWithProps & Omit<ChainSelectorProps, "switchChainId"> & StatusIndicatorProps;
+export type ConnectorCardProps = ConnectWithProps & Omit<ChainSelectorProps, "onSelected"> & StatusIndicatorProps;
