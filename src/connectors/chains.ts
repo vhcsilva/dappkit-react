@@ -7,10 +7,10 @@ export const Chains = [
     urls: ["https://cloudflare-eth.com"]
   },
   {
-    name: 'Aurelius',
-    symbol: 'ETH',
+    name: 'Mumbai',
+    symbol: 'MATIC',
     decimals: 18,
-    id: 1505,
-    urls: ["https://cloudflare-eth.com"]
+    id: 80001,
+    urls: ["https://polygon-mumbai-bor.publicnode.com"]
   }
 ]

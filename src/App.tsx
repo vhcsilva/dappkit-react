@@ -25,11 +25,12 @@ function App() {
 
   return (
     <div className="App">
-      <header className="App-header" style={{ display: 'flex', flexFlow: 'wrap', fontFamily: 'sans-serif' }}>
+      <header className="App-header">
         <CoinbaseCard onConnectorConnect={onConnectorConnect} onConnectorDisconnect={onConnectorDisconnect} />
         <MetamaskCard onConnectorConnect={onConnectorConnect} onConnectorDisconnect={onConnectorDisconnect}/>
-        <div style={{textAlign: "center"}}>{address}</div>
       </header>
+
+      <div className="address">{address}</div>
 
     </div>
   );
