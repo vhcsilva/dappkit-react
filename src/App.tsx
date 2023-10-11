@@ -3,7 +3,7 @@ import './App.css';
 import type {provider as Provider} from "web3-core";
 import CoinbaseCard from "./components/connector-card/coinbase-card/coinbase-card";
 import MetamaskCard from "./components/connector-card/metamask-card/metamask-card";
-import {useDappkit, useDappkitConnectionInfo} from "./hoox/use-dappkit";
+import {useDappkit, useDappkitConnectionInfo} from "./custom-hooks/use-dappkit";
 
 function App() {
 
