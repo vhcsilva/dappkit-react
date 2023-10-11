@@ -1,36 +1,36 @@
-import React, {useState} from 'react';
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
-import {Connectors} from "./connectors/connectors";
-import ConnectorCard from "./components/connector-card/connector-card";
-import {Chains} from "./connectors/chains";
-import {Web3Connection} from "@taikai/dappkit";
 import type {provider as Provider} from "web3-core";
+import CoinbaseCard from "./components/connector-card/coinbase-card/coinbase-card";
+import MetamaskCard from "./components/connector-card/metamask-card/metamask-card";
+import {useDappkit, useDappkitConnectionInfo} from "./hoox/use-dappkit";
 
 function App() {
-  const [error, setError] = useState();
-  const [provider, setProvider] = useState();
 
-  async function onProviderSelected(provider: Provider) {
-    console.log(provider);
-    const web3Connection = new Web3Connection({web3CustomProvider: provider});
-    await web3Connection.connect();
+  const {setProvider, initializeConnection} =
+    useDappkit(({setProvider, initializeConnection}) =>
+      ({setProvider, initializeConnection}));
+
+  const {address} = useDappkitConnectionInfo();
+
+  async function onConnectorConnect(provider: Provider) {
+    setProvider(null);
+    setProvider(provider);
+    initializeConnection();
+  }
+
+  async function onConnectorDisconnect() {
+    setProvider(null);
   }
 
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a className="App-link" href="https://reactjs.org" target="_blank" rel="noopener noreferrer">
-          Learn React
-        </a>
+      <header className="App-header" style={{ display: 'flex', flexFlow: 'wrap', fontFamily: 'sans-serif' }}>
+        <CoinbaseCard onConnectorConnect={onConnectorConnect} onConnectorDisconnect={onConnectorDisconnect} />
+        <MetamaskCard onConnectorConnect={onConnectorConnect} onConnectorDisconnect={onConnectorDisconnect}/>
+        <div style={{textAlign: "center"}}>{address}</div>
       </header>
-      {Connectors.map((wallet) => {
-        return <ConnectorCard connector={wallet} error={error} chainIds={Chains} setError={setError} onProviderSelected={onProviderSelected} />
-      })}
+
     </div>
   );
 }

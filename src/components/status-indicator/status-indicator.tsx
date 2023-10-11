@@ -1,4 +1,4 @@
-import {StatusIndicatorProps} from "./status-indicator.d";
+import {StatusIndicatorProps} from "../../types/status-indicator";
 
 
 export default function StatusIndicator({isActivating, isActive, error}: StatusIndicatorProps) {

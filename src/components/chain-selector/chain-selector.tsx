@@ -1,4 +1,4 @@
-import {ChainSelectorProps} from "./chain-selector.d";
+import {ChainSelectorProps} from "../../types/chain-selector";
 
 export default function ChainSelector({activeChainId, switchChainId, chainIds}: ChainSelectorProps) {
   return <select value={activeChainId}

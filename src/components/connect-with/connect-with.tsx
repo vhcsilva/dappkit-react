@@ -1,8 +1,9 @@
-import type {ConnectWithProps} from "./connect-with.d";
+import type {ConnectWithProps} from "../../types/connect-with";
 import {CSSProperties, useCallback, useEffect, useState} from "react";
 import ChainSelector from "../chain-selector/chain-selector";
+import {provider as Provider} from "web3-core";
 
-export default function ConnectWith({activeChainId, setError, connector, chainIds, isActive, error, onProviderSelected}: ConnectWithProps) {
+export default function ConnectWith({activeChainId, setError, connector, chainIds, isActive, error, onConnectorConnect, onConnectorDisconnect}: ConnectWithProps) {
   const [desiredChainId, setDesiredChainId] = useState<number|undefined>(undefined);
 
   const switchChain = useCallback(
@@ -15,9 +16,11 @@ export default function ConnectWith({activeChainId, setError, connector, chainId
         }
 
         await connector.activate(_desiredChainId);
-        onProviderSelected(connector.provider)
+        if (connector.provider)
+          onConnectorConnect?.(connector.provider as unknown as Provider);
+        else throw new Error(`Failed to get a provider, make sure your connector has one!`)
 
-      } catch (e) {
+      } catch (e: any) {
         setError(e);
       }
     }, [connector, activeChainId, setError]
@@ -33,6 +36,7 @@ export default function ConnectWith({activeChainId, setError, connector, chainId
     else void connector?.resetState();
 
     setDesiredChainId(undefined);
+    onConnectorDisconnect?.()
   }
 
   async function onSelectChain() {

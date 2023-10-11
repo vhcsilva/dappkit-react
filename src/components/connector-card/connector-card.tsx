@@ -1,8 +1,8 @@
 import {CSSProperties} from "react";
-import {ConnectorCardProps} from "./connector-card.d";
 import StatusIndicator from "../status-indicator/status-indicator";
 import ChainInfo from "../chain-info/chain-info";
 import ConnectWith from "../connect-with/connect-with";
+import {ConnectorCardProps} from "../../types/connector-card";
 
 export default function ConnectorCard({
                                         connector,
@@ -11,7 +11,7 @@ export default function ConnectorCard({
                                         setError,
                                         error,
                                         chainIds = [],
-                                        activeChainId, onProviderSelected,
+                                        activeChainId, onConnectorConnect, onConnectorDisconnect,
                                       }: ConnectorCardProps) {
   const style: CSSProperties = {
     display: "flex",
@@ -26,14 +26,15 @@ export default function ConnectorCard({
   };
 
   return <div style={style}>
-    <b>Name: {connector?.name}</b>
+    <b>{connector?.constructor.name}</b>
     <div style={{marginBottom: "1rem"}}>
       <StatusIndicator isActivating={isActivating} isActive={isActive} error={error}/>
     </div>
-    <ChainInfo id={activeChainId}/>
+    <ChainInfo id={activeChainId?.toString()}/>
     <ConnectWith activeChainId={activeChainId}
                  setError={setError}
-                 onProviderSelected={onProviderSelected}
+                 onConnectorConnect={onConnectorConnect}
+                 onConnectorDisconnect={onConnectorDisconnect}
                  connector={connector}
                  chainIds={chainIds}
                  isActivating={isActivating}
