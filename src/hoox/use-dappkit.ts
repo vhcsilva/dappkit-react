@@ -39,7 +39,6 @@ export const useDappkitConnectionInfo = () => {
     }
 
     (async () => {
-      console.log(`running`, connection);
       const _address = await connection.getAddress();
       setChainId(await connection.getETHNetworkId())
       setAddress(_address);
