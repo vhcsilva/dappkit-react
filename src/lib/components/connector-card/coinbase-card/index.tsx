@@ -1,12 +1,12 @@
 import {coinbaseWallet, hooks} from "../../../connectors/coinbase-wallet";
-import ConnectorCard from "../connector-card";
+import {ConnectorCard} from "../index";
 import {Chains} from "../../../connectors/chains";
 import {useConnectorHooks} from "../../../custom-hooks/use-connector-hooks";
 import {useConnectEagerly} from "../../../custom-hooks/use-connect-eagerly";
 import {CustomConnectorCardProps} from "../../../types/connector-card";
 import {useDappkitConnectionInfo} from "../../../custom-hooks/use-dappkit";
 
-export default function CoinbaseCard({onConnectorConnect, onConnectorDisconnect}: CustomConnectorCardProps) {
+export function CoinbaseCard({onConnectorConnect, onConnectorDisconnect}: CustomConnectorCardProps) {
   const {isActivating, isActive, error, setError} = useConnectorHooks(hooks);
   const {chainId, connected} = useDappkitConnectionInfo();
 

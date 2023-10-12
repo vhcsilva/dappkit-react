@@ -23,9 +23,12 @@
     "web-vitals": "^2.1.4",
     "zustand": "^4.4.3"
   },
+  "module": "dist/package-esm.js",
+  "main": "dist/package-cjs.js",
   "scripts": {
     "start": "react-app-rewired start",
     "build": "react-app-rewired build",
+    "build-lib": "rollup --config rollup.config.mjs",
     "test": "react-app-rewired test",
     "eject": "react-app-rewired eject"
   },
@@ -48,6 +51,11 @@
     ]
   },
   "devDependencies": {
-    "react-app-rewired": "^2.2.1"
+    "@rollup/plugin-commonjs": "^25.0.5",
+    "@rollup/plugin-typescript": "^11.1.5",
+    "react-app-rewired": "^2.2.1",
+    "remove": "^0.1.5",
+    "rollup": "^2.79.1",
+    "rollup-plugin-postcss-modules": "^2.1.1"
   }
 }

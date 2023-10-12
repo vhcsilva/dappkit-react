@@ -1,10 +1,10 @@
 import type {ConnectWithProps} from "../../types/connect-with";
 import {useCallback, useState} from "react";
-import ChainSelector from "../chain-selector/chain-selector";
+import {ChainSelector} from "../chain-selector";
 import {provider as Provider} from "web3-core";
 import {Button} from "@taikai/rocket-kit";
 
-export default function ConnectWith({activeChainId, setError, connector, chainIds, isActive, error, onConnectorConnect, onConnectorDisconnect}: ConnectWithProps) {
+export function ConnectWith({activeChainId, setError, connector, chainIds, isActive, error, onConnectorConnect, onConnectorDisconnect}: ConnectWithProps) {
   const [desiredChainId, setDesiredChainId] = useState<number|undefined>(undefined);
 
   const switchChain = useCallback(

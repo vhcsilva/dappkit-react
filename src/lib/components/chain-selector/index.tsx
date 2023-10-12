@@ -3,7 +3,7 @@ import {SelectInteractive} from "@taikai/rocket-kit";
 import {useCallback} from "react";
 import {TOptions} from "@taikai/rocket-kit/dist/atoms/select-interactive/types";
 
-export default function ChainSelector({activeChainId, onSelected, chainIds}: ChainSelectorProps) {
+export function ChainSelector({activeChainId, onSelected, chainIds}: ChainSelectorProps) {
   const _onChange = useCallback((option: TOptions|TOptions[]) => {
      onSelected(+(option as TOptions).value);
   }, []);

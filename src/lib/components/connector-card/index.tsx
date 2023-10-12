@@ -1,10 +1,10 @@
 import {CSSProperties} from "react";
-import StatusIndicator from "../status-indicator/status-indicator";
-import ChainInfo from "../chain-info/chain-info";
-import ConnectWith from "../connect-with/connect-with";
+import StatusIndicator from "../status-indicator";
+import {ChainInfo} from "../chain-info";
+import {ConnectWith} from "../connect-with";
 import {ConnectorCardProps} from "../../types/connector-card";
 
-export default function ConnectorCard({
+export function ConnectorCard({
                                         connector,
                                         isActivating,
                                         isActive,

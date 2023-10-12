@@ -1,14 +1,14 @@
 import {WalletSelectorProps} from "../../types/wallet-selector";
 import {useDappkit, useDappkitConnectionInfo} from "../../custom-hooks/use-dappkit";
 import {provider as Provider} from "web3-core";
-import CoinbaseCard from "../connector-card/coinbase-card/coinbase-card";
-import MetamaskCard from "../connector-card/metamask-card/metamask-card";
-import GnosisSafeCard from "../connector-card/gnosis-safe-card/gnosis-safe-card";
+import {CoinbaseCard} from "../connector-card/coinbase-card";
+import {MetamaskCard} from "../connector-card/metamask-card";
+import {GnosisSafeCard} from "../connector-card/gnosis-safe-card";
 import React from "react";
 import {GridCol, GridContainer, GridRow, Modal} from "@taikai/rocket-kit";
 import "./styles.css"
 
-export default function WalletSelector({showWallets, showModal, modalCloseClicked = (() => {}), modalTitle}: WalletSelectorProps) {
+export function WalletSelector({showWallets, showModal, modalCloseClicked = (() => {}), modalTitle}: WalletSelectorProps) {
   const {setProvider, initializeConnection} =
     useDappkit(({setProvider, initializeConnection}) =>
       ({setProvider, initializeConnection}));

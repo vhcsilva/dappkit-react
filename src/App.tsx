@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import './App.css';
-import WalletSelector from "./components/wallet-selector/wallet-selector";
+import {WalletSelector} from "./lib";
 import {Button} from "@taikai/rocket-kit";
 
 function App() {
