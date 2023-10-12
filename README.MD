@@ -17,6 +17,6 @@ const {address, chainId, connected} = useDappkitConnectionInfo(); // check conne
 ### Wallet selector
 ```tsx
 // .. your component
-<WalletSelector show={["metamask", "coinbase", "gnosis"]} />
+<WalletSelector showWallets={["metamask", "coinbase", "gnosis"]} />
 // On wallet selection, WalletSelector plugin will change the values and connection of useDappkitConnection/Info()
 ```

@@ -1,7 +1,8 @@
 import type {ConnectWithProps} from "../../types/connect-with";
-import {CSSProperties, useCallback, useEffect, useState} from "react";
+import {useCallback, useState} from "react";
 import ChainSelector from "../chain-selector/chain-selector";
 import {provider as Provider} from "web3-core";
+import {Button} from "@taikai/rocket-kit";
 
 export default function ConnectWith({activeChainId, setError, connector, chainIds, isActive, error, onConnectorConnect, onConnectorDisconnect}: ConnectWithProps) {
   const [desiredChainId, setDesiredChainId] = useState<number|undefined>(undefined);
@@ -44,22 +45,17 @@ export default function ConnectWith({activeChainId, setError, connector, chainId
       await switchChain(desiredChainId)
   }
 
-  const style: CSSProperties = {
-    display: "flex",
-    flexDirection: "column",
-  }
-
-  return <div style={style}>
+  return <div style={{textAlign: "center"}}>
     <ChainSelector activeChainId={desiredChainId || -1}
                    chainIds={chainIds}
                    onSelected={id => setDesiredChainId(id)} />
 
-    <div style={{marginBottom: "1rem"}}>
+    <div style={{margin: "1rem 0 0", display: "inline-flex", alignItems: "center"}}>
       {isActive
         ? error
-          ? (<button onClick={() => retry()}>try again?</button>)
-          : (<button onClick={() => onDisconnectClick()}>Disconnect</button>)
-        : (<button onClick={() => onSelectChain()}>{error ? "try again?" : "connect"}</button>)
+          ? (<Button action={() => retry()} value="try again?"/>)
+          : (<Button action={() => onDisconnectClick()} value="Disconnect"/>)
+        : (<Button action={() => onSelectChain()} value={error ? "try again?" : "connect"}/>)
       }
     </div>
   </div>

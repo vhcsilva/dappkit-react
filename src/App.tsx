@@ -1,40 +1,20 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './App.css';
-import type {provider as Provider} from "web3-core";
-import CoinbaseCard from "./components/connector-card/coinbase-card/coinbase-card";
-import MetamaskCard from "./components/connector-card/metamask-card/metamask-card";
-import {useDappkit, useDappkitConnectionInfo} from "./custom-hooks/use-dappkit";
-import GnosisSafeCard from "./components/connector-card/gnosis-safe-card/gnosis-safe-card";
+import WalletSelector from "./components/wallet-selector/wallet-selector";
+import {Button} from "@taikai/rocket-kit";
 
 function App() {
 
-  const {setProvider, initializeConnection} =
-    useDappkit(({setProvider, initializeConnection}) =>
-      ({setProvider, initializeConnection}));
-
-  const {address} = useDappkitConnectionInfo();
-
-  async function onConnectorConnect(provider: Provider) {
-    setProvider(null);
-    setProvider(provider);
-    initializeConnection();
-  }
-
-  async function onConnectorDisconnect() {
-    setProvider(null);
-    window.location.reload();
-  }
+  const [showModal, setShowModal] = useState(false)
 
   return (
     <div className="App">
       <header className="App-header">
-        <CoinbaseCard onConnectorConnect={onConnectorConnect} onConnectorDisconnect={onConnectorDisconnect} />
-        <MetamaskCard onConnectorConnect={onConnectorConnect} onConnectorDisconnect={onConnectorDisconnect}/>
-        <GnosisSafeCard onConnectorConnect={onConnectorConnect} onConnectorDisconnect={onConnectorDisconnect}/>
+        <Button action={() => setShowModal(!showModal)} value="Show wallet selector" />
+        <WalletSelector modalCloseClicked={() => setShowModal(false)}
+                        showWallets={["coinbase", "metamask", "gnosis"]}
+                        showModal={showModal} />
       </header>
-
-      <div className="address">{address}</div>
-
     </div>
   );
 }

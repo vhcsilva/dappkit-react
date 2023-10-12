@@ -1,16 +1,18 @@
-export const Chains = [
+import {ChainSelectorOption} from "../types/chain-selector";
+
+export const Chains: ChainSelectorOption[] = [
   {
-    name: 'Ether',
+    label: 'Ether',
     symbol: 'ETH',
     decimals: 18,
-    id: 1,
+    value: "1",
     urls: ["https://cloudflare-eth.com"]
   },
   {
-    name: 'Mumbai',
+    label: 'Mumbai',
     symbol: 'MATIC',
     decimals: 18,
-    id: 80001,
+    value: "80001",
     urls: ["https://polygon-mumbai-bor.publicnode.com"]
   }
 ]

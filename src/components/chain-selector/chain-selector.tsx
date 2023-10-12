@@ -1,10 +1,15 @@
 import {ChainSelectorProps} from "../../types/chain-selector";
+import {SelectInteractive} from "@taikai/rocket-kit";
+import {useCallback} from "react";
+import {TOptions} from "@taikai/rocket-kit/dist/atoms/select-interactive/types";
 
 export default function ChainSelector({activeChainId, onSelected, chainIds}: ChainSelectorProps) {
-  return <select value={activeChainId}
-                 onChange={(e) => onSelected(Number(e.target.value))}>
-      <option hidden value={-2}>Select chain</option>
-      <option value={-1}>Default</option>
-    {chainIds.map(({name, id}) => <option key={id} value={id}>{name}</option>)}
-  </select>
+  const _onChange = useCallback((option: TOptions|TOptions[]) => {
+     onSelected(+(option as TOptions).value);
+  }, []);
+
+  return <SelectInteractive search
+                            value={{value: activeChainId.toString(), label: ""}}
+                            onChange={_onChange}
+                            options={chainIds} />
 }
