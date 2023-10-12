@@ -24,7 +24,7 @@ export function ConnectWith({activeChainId, setError, connector, chainIds, isAct
       } catch (e: any) {
         setError(e);
       }
-    }, [connector, activeChainId, setError]
+    }, [connector, activeChainId, setError, onConnectorConnect]
   )
 
   async function retry() {

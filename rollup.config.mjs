@@ -1,20 +1,31 @@
-import typescript from "@rollup/plugin-typescript";
+import ts from "rollup-plugin-ts";
 import commonjs from '@rollup/plugin-commonjs';
-import postcss from 'rollup-plugin-postcss-modules';
 import pkg from "./package.json" assert {type: "json"};
 
-export default {
-  input: "src/lib/index.ts",
-  plugins: [typescript(), postcss({extract: true, writeDefinitions: true}), commonjs()],
-  output: [
-    {
-      file: pkg.main,
-      format: "cjs",
-      exports: "named",
-    },
-    {
-      file: pkg.module,
-      format: "esm",
-    }
-  ]
-}
+export default [
+  {
+    input: "src/lib/index.ts",
+    plugins: [
+      ts({tsconfig: "tsconfig.json"}),
+      commonjs()
+    ],
+    output: [
+      {
+        file: pkg.main,
+        format: "cjs"
+      },
+      {
+        file: pkg.module,
+        format: "esm"
+      }
+    ],
+    external: [
+      /\@web3-react.+/,
+      /zustand(.+)?/,
+      "@taikai/dappkit",
+      "@taikai/rocket-kit",
+      /react(.+)?/,
+      /styl(is|ed-components)/,
+    ],
+  },
+]

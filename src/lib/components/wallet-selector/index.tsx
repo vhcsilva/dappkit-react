@@ -6,7 +6,10 @@ import {MetamaskCard} from "../connector-card/metamask-card";
 import {GnosisSafeCard} from "../connector-card/gnosis-safe-card";
 import React from "react";
 import {GridCol, GridContainer, GridRow, Modal} from "@taikai/rocket-kit";
-import "./styles.css"
+import styled from "styled-components";
+
+const WalletList = styled(GridRow)`flex-wrap: wrap;`;
+const WalletCard = styled(GridCol)`display: inline-flex; justify-content: center;`;
 
 export function WalletSelector({showWallets, showModal, modalCloseClicked = (() => {}), modalTitle}: WalletSelectorProps) {
   const {setProvider, initializeConnection} =
@@ -34,11 +37,11 @@ export function WalletSelector({showWallets, showModal, modalCloseClicked = (() 
             <GridCol className="wallet-connected-address">{address}</GridCol>
           </GridRow>
           {!showWallets.length ? <GridRow><GridCol>No allowed list provided</GridCol></GridRow> : null}
-          <GridRow className="wallet-list">
-            {showWallets.includes("coinbase") ? <GridCol><CoinbaseCard onConnectorConnect={onConnectorConnect} onConnectorDisconnect={onConnectorDisconnect}/></GridCol> : null}
-            {showWallets.includes("metamask") ? <GridCol><MetamaskCard onConnectorConnect={onConnectorConnect} onConnectorDisconnect={onConnectorDisconnect}/></GridCol> : null}
-            {showWallets.includes("gnosis") ? <GridCol><GnosisSafeCard onConnectorConnect={onConnectorConnect} onConnectorDisconnect={onConnectorDisconnect}/></GridCol> : null}
-          </GridRow>
+          <WalletList>
+            {showWallets.includes("coinbase") ? <WalletCard><CoinbaseCard onConnectorConnect={onConnectorConnect} onConnectorDisconnect={onConnectorDisconnect}/></WalletCard> : null}
+            {showWallets.includes("metamask") ? <WalletCard><MetamaskCard onConnectorConnect={onConnectorConnect} onConnectorDisconnect={onConnectorDisconnect}/></WalletCard> : null}
+            {showWallets.includes("gnosis") ? <WalletCard><GnosisSafeCard onConnectorConnect={onConnectorConnect} onConnectorDisconnect={onConnectorDisconnect}/></WalletCard> : null}
+          </WalletList>
         </GridContainer>
       </Modal>
 

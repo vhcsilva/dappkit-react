@@ -1,8 +1,0 @@
-.wallet-list {
-    flex-wrap: wrap;
-}
-
-.wallet-list .grid-col {
-    display: inline-flex;
-    justify-content: center;
-}

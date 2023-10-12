@@ -1,30 +1,21 @@
 {
   "name": "@layerx-labs/dappkit-react",
-  "version": "0.1.0",
-  "private": true,
+  "version": "0.1.1",
+  "private": false,
   "dependencies": {
     "@taikai/dappkit": "^2.3.1",
     "@taikai/rocket-kit": "^3.0.6",
-    "@testing-library/jest-dom": "^5.17.0",
-    "@testing-library/react": "^13.4.0",
-    "@testing-library/user-event": "^13.5.0",
-    "@types/jest": "^27.5.2",
-    "@types/node": "^16.18.58",
-    "@types/react": "^18.2.25",
-    "@types/react-dom": "^18.2.11",
     "@web3-react/coinbase-wallet": "^8.2.3",
     "@web3-react/core": "^8.2.3",
     "@web3-react/gnosis-safe": "^8.2.4",
     "@web3-react/metamask": "^8.2.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-scripts": "5.0.1",
-    "typescript": "^4.9.5",
-    "web-vitals": "^2.1.4",
+    "styled-components": "^6.0.9",
     "zustand": "^4.4.3"
   },
-  "module": "dist/package-esm.js",
-  "main": "dist/package-cjs.js",
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.esm.js",
   "scripts": {
     "start": "react-app-rewired start",
     "build": "react-app-rewired build",
@@ -52,10 +43,24 @@
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^25.0.5",
-    "@rollup/plugin-typescript": "^11.1.5",
+    "@testing-library/jest-dom": "^5.17.0",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^13.5.0",
+    "@types/jest": "^27.5.2",
+    "@types/node": "^16.18.58",
+    "@types/react": "^18.2.25",
+    "@types/react-dom": "^18.2.11",
+    "@types/styled-components": "^5.1.28",
     "react-app-rewired": "^2.2.1",
     "remove": "^0.1.5",
-    "rollup": "^2.79.1",
-    "rollup-plugin-postcss-modules": "^2.1.1"
-  }
+    "rollup": "^4.0.2",
+    "rollup-plugin-postcss": "^4.0.2",
+    "rollup-plugin-ts": "^3.4.5",
+    "typescript": "^4.9.5"
+  },
+  "files": [
+    "dist",
+    "README.MD"
+  ],
+  "types": "dist/index.esm.d.ts"
 }

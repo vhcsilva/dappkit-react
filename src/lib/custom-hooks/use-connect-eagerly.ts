@@ -7,5 +7,5 @@ export function useConnectEagerly(connector: Connector) {
       .catch(e => {
         console.debug(`Failed to connect eagerly to ${connector.constructor.name}`, e);
       });
-  }, [])
+  }, [connector])
 }
