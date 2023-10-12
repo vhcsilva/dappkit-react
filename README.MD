@@ -7,16 +7,23 @@ $ npm install -s @layerx-labs/dappkit-react
 
 ### Custom Hooks
 ```tsx
-// ... your component
 import {useDappkitConnection, useDappkitConnectionInfo} from "./use-dappkit";
+// ... your component
 
-const {connection} = useDappkitConnection(); // share this with your other dappkit classes
-const {address, chainId, connected} = useDappkitConnectionInfo(); // check connection address, chainId and connected status
+// share this connection with your other dappkit classes
+const {connection} = useDappkitConnection();
+
+// check connection address, chainId and connected status
+const {address, chainId, connected} = useDappkitConnectionInfo(); 
 ```
 
 ### Wallet selector
 ```tsx
+const [showModal, setShowModal] = useState(false);
 // .. your component
-<WalletSelector showWallets={["metamask", "coinbase", "gnosis"]} />
+<WalletSelector modalCloseClicked={() => setShowModal(false)}
+                showWallets={["coinbase", "metamask", "gnosis"]}
+                showModal={showModal} />
+
 // On wallet selection, WalletSelector plugin will change the values and connection of useDappkitConnection/Info()
 ```
