@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/dappkit-react/static/css/main.12cbf22b.css",
-    "main.js": "/dappkit-react/static/js/main.359b00f5.js",
+    "main.js": "/dappkit-react/static/js/main.cbddd7ff.js",
     "index.html": "/dappkit-react/index.html",
     "main.12cbf22b.css.map": "/dappkit-react/static/css/main.12cbf22b.css.map",
-    "main.359b00f5.js.map": "/dappkit-react/static/js/main.359b00f5.js.map"
+    "main.cbddd7ff.js.map": "/dappkit-react/static/js/main.cbddd7ff.js.map"
   },
   "entrypoints": [
     "static/css/main.12cbf22b.css",
-    "static/js/main.359b00f5.js"
+    "static/js/main.cbddd7ff.js"
   ]
 }
