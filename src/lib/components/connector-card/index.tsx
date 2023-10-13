@@ -3,6 +3,7 @@ import StatusIndicator from "../status-indicator";
 import {ChainInfo} from "../chain-info";
 import {ConnectWith} from "../connect-with";
 import {ConnectorCardProps} from "../../types/connector-card";
+import {getConnectorName} from "../../connectors/get-connector-name";
 
 export function ConnectorCard({
                                         connector,
@@ -28,7 +29,7 @@ export function ConnectorCard({
   };
 
   return <div style={style}>
-    <b>{connector?.constructor.name}</b>
+    <b>{getConnectorName(connector)}</b>
     <div style={{marginBottom: "1rem"}}>
       <StatusIndicator isActivating={isActivating} isActive={isActive} error={error}/>
     </div>
