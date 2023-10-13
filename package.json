@@ -63,5 +63,5 @@
     "README.MD"
   ],
   "types": "dist/index.esm.d.ts",
-  "homepage": "https://github.com/moshmage/dappkit-react"
+  "homepage": "https://moshmage.github.io/dappkit-react"
 }
