@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/moshmage/dappkit-react/static/css/main.12cbf22b.css",
-    "main.js": "/moshmage/dappkit-react/static/js/main.04705f7d.js",
-    "index.html": "/moshmage/dappkit-react/index.html",
-    "main.12cbf22b.css.map": "/moshmage/dappkit-react/static/css/main.12cbf22b.css.map",
-    "main.04705f7d.js.map": "/moshmage/dappkit-react/static/js/main.04705f7d.js.map"
+    "main.css": "/dappkit-react/static/css/main.12cbf22b.css",
+    "main.js": "/dappkit-react/static/js/main.359b00f5.js",
+    "index.html": "/dappkit-react/index.html",
+    "main.12cbf22b.css.map": "/dappkit-react/static/css/main.12cbf22b.css.map",
+    "main.359b00f5.js.map": "/dappkit-react/static/js/main.359b00f5.js.map"
   },
   "entrypoints": [
     "static/css/main.12cbf22b.css",
-    "static/js/main.04705f7d.js"
+    "static/js/main.359b00f5.js"
   ]
 }
