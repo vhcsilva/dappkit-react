@@ -1,9 +1,9 @@
 import {ModalModes, WalletSelectorProps} from "../../types/wallet-selector";
 import {useDappkit, useDappkitConnectionInfo} from "../../custom-hooks/use-dappkit";
 import {provider as Provider} from "web3-core";
-import {CoinbaseButton} from "../connector-card/coinbase-button";
-import {MetamaskButton} from "../connector-card/metamask-button";
-import {GnosisSafeButton} from "../connector-card/gnosis-safe-button";
+import {CoinbaseButton} from "../connector-button/coinbase";
+import {MetamaskButton} from "../connector-button/metamask";
+import {GnosisSafeButton} from "../connector-button/gnosis-safe";
 import React from "react";
 import {GridCol, GridContainer, GridRow, Modal, ModalDrawer} from "@taikai/rocket-kit";
 import styled, {createGlobalStyle} from "styled-components";
