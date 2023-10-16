@@ -1,19 +1,21 @@
+import {coinbaseWallet, hooks} from "../../../connectors/coinbase-wallet";
 import {useConnectorHooks} from "../../../custom-hooks/use-connector-hooks";
 import {CustomConnectorCardProps} from "../../../types/connector-card";
 import {useDappkitConnectionInfo} from "../../../custom-hooks/use-dappkit";
-import {gnosisSafe, hooks} from "../../../connectors/gnosis-safe";
+import Logo from "./logo.svg";
 import {ConnectorButton} from "../../connector-button";
 
-export function GnosisSafeCard({onConnectorConnect, onConnectorDisconnect, variant}: CustomConnectorCardProps) {
+export function CoinbaseButton({onConnectorConnect, onConnectorDisconnect, variant}: CustomConnectorCardProps) {
   const {isActive, error, setError} = useConnectorHooks(hooks);
   const {chainId, connected} = useDappkitConnectionInfo();
 
-  return <ConnectorButton connector={gnosisSafe}
+  return <ConnectorButton activeChainId={chainId || 0}
+                          logo={<Logo />}
                           variant={variant}
-                          activeChainId={chainId || 0}
+                          setError={setError}
                           onConnectorConnect={onConnectorConnect}
                           onConnectorDisconnect={onConnectorDisconnect}
+                          connector={coinbaseWallet}
                           isActive={connected && isActive}
-                          setError={setError}
                           error={error}/>
 }

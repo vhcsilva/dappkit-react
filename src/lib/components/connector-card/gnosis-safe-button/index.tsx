@@ -1,16 +1,14 @@
-import {CustomConnectorCardProps} from "../../../types/connector-card";
 import {useConnectorHooks} from "../../../custom-hooks/use-connector-hooks";
-import {hooks, metamaskWallet} from "../../../connectors/metamask-wallet";
+import {CustomConnectorCardProps} from "../../../types/connector-card";
 import {useDappkitConnectionInfo} from "../../../custom-hooks/use-dappkit";
-import Logo from "./logo.svg";
+import {gnosisSafe, hooks} from "../../../connectors/gnosis-safe";
 import {ConnectorButton} from "../../connector-button";
 
-export function MetamaskCard({onConnectorConnect, onConnectorDisconnect, variant}: CustomConnectorCardProps) {
+export function GnosisSafeButton({onConnectorConnect, onConnectorDisconnect, variant}: CustomConnectorCardProps) {
   const {isActive, error, setError} = useConnectorHooks(hooks);
   const {chainId, connected} = useDappkitConnectionInfo();
 
-  return <ConnectorButton connector={metamaskWallet}
-                          logo={<Logo/>}
+  return <ConnectorButton connector={gnosisSafe}
                           variant={variant}
                           activeChainId={chainId || 0}
                           onConnectorConnect={onConnectorConnect}

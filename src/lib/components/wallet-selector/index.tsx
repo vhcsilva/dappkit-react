@@ -1,9 +1,9 @@
 import {ModalModes, WalletSelectorProps} from "../../types/wallet-selector";
 import {useDappkit, useDappkitConnectionInfo} from "../../custom-hooks/use-dappkit";
 import {provider as Provider} from "web3-core";
-import {CoinbaseCard} from "../connector-card/coinbase-card";
-import {MetamaskCard} from "../connector-card/metamask-card";
-import {GnosisSafeCard} from "../connector-card/gnosis-safe-card";
+import {CoinbaseButton} from "../connector-card/coinbase-button";
+import {MetamaskButton} from "../connector-card/metamask-button";
+import {GnosisSafeButton} from "../connector-card/gnosis-safe-button";
 import React from "react";
 import {GridCol, GridContainer, GridRow, Modal, ModalDrawer} from "@taikai/rocket-kit";
 import styled, {createGlobalStyle} from "styled-components";
@@ -58,19 +58,19 @@ export function WalletSelector({
       <GridRowFlexWrap variant={mode}>
         {showWallets.includes(ConnectorsNames.Coinbase) ?
           <GridColNoGrowVariant variant={mode}
-                                children={<CoinbaseCard variant={mode}
-                                                        onConnectorConnect={onConnectorConnect}
-                                                        onConnectorDisconnect={onConnectorDisconnect}/>}/> : null}
-        {showWallets.includes(ConnectorsNames.Metamask) ?
-          <GridColNoGrowVariant variant={mode}
-                                children={<MetamaskCard variant={mode}
-                                                        onConnectorConnect={onConnectorConnect}
-                                                        onConnectorDisconnect={onConnectorDisconnect}/>}/> : null}
-        {showWallets.includes(ConnectorsNames.GnosisSafe) ?
-          <GridColNoGrowVariant variant={mode}
-                                children={<GnosisSafeCard variant={mode}
+                                children={<CoinbaseButton variant={mode}
                                                           onConnectorConnect={onConnectorConnect}
                                                           onConnectorDisconnect={onConnectorDisconnect}/>}/> : null}
+        {showWallets.includes(ConnectorsNames.Metamask) ?
+          <GridColNoGrowVariant variant={mode}
+                                children={<MetamaskButton variant={mode}
+                                                          onConnectorConnect={onConnectorConnect}
+                                                          onConnectorDisconnect={onConnectorDisconnect}/>}/> : null}
+        {showWallets.includes(ConnectorsNames.GnosisSafe) ?
+          <GridColNoGrowVariant variant={mode}
+                                children={<GnosisSafeButton variant={mode}
+                                                            onConnectorConnect={onConnectorConnect}
+                                                            onConnectorDisconnect={onConnectorDisconnect}/>}/> : null}
       </GridRowFlexWrap>
     </GridContainer>
   }
