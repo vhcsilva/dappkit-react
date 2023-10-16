@@ -1,10 +1,10 @@
 import {useConnectorHooks} from "../../../custom-hooks/use-connector-hooks";
-import {CustomConnectorCardProps} from "../../../types/connector-card";
+import {CustomConnectorButtonProps} from "../../../types/custom-connector-button";
 import {useDappkitConnectionInfo} from "../../../custom-hooks/use-dappkit";
 import {gnosisSafe, hooks} from "../../../connectors/gnosis-safe";
 import {ConnectorButton} from "../index";
 
-export function GnosisSafeButton({onConnectorConnect, onConnectorDisconnect, variant}: CustomConnectorCardProps) {
+export function GnosisSafeButton({onConnectorConnect, onConnectorDisconnect, variant}: CustomConnectorButtonProps) {
   const {isActive, error, setError} = useConnectorHooks(hooks);
   const {chainId, connected} = useDappkitConnectionInfo();
 

@@ -1,11 +1,11 @@
 import {coinbaseWallet, hooks} from "../../../connectors/coinbase-wallet";
 import {useConnectorHooks} from "../../../custom-hooks/use-connector-hooks";
-import {CustomConnectorCardProps} from "../../../types/connector-card";
+import {CustomConnectorButtonProps} from "../../../types/custom-connector-button";
 import {useDappkitConnectionInfo} from "../../../custom-hooks/use-dappkit";
 import Logo from "./logo.svg";
 import {ConnectorButton} from "../index";
 
-export function CoinbaseButton({onConnectorConnect, onConnectorDisconnect, variant}: CustomConnectorCardProps) {
+export function CoinbaseButton({onConnectorConnect, onConnectorDisconnect, variant}: CustomConnectorButtonProps) {
   const {isActive, error, setError} = useConnectorHooks(hooks);
   const {chainId, connected} = useDappkitConnectionInfo();
 

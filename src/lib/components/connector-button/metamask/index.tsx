@@ -1,11 +1,11 @@
-import {CustomConnectorCardProps} from "../../../types/connector-card";
+import {CustomConnectorButtonProps} from "../../../types/custom-connector-button";
 import {useConnectorHooks} from "../../../custom-hooks/use-connector-hooks";
 import {hooks, metamaskWallet} from "../../../connectors/metamask-wallet";
 import {useDappkitConnectionInfo} from "../../../custom-hooks/use-dappkit";
 import Logo from "./logo.svg";
 import {ConnectorButton} from "../index";
 
-export function MetamaskButton({onConnectorConnect, onConnectorDisconnect, variant}: CustomConnectorCardProps) {
+export function MetamaskButton({onConnectorConnect, onConnectorDisconnect, variant}: CustomConnectorButtonProps) {
   const {isActive, error, setError} = useConnectorHooks(hooks);
   const {chainId, connected} = useDappkitConnectionInfo();
 
