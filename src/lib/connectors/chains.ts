@@ -1,6 +1,6 @@
-import {ChainSelectorOption} from "../types/chain-selector";
+import {TOptions} from "@taikai/rocket-kit/dist/atoms/select-interactive/types";
 
-export const Chains: ChainSelectorOption[] = [
+export const Chains: TOptions[] = [
   {
     label: 'Ether',
     symbol: 'ETH',

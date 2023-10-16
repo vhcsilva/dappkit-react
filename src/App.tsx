@@ -2,19 +2,20 @@ import React, {useState} from 'react';
 import './App.css';
 import {WalletSelector} from "./lib";
 import {Button} from "@taikai/rocket-kit";
+import {ConnectorsNames} from "./lib/types/connectors";
 
 function App() {
 
-  const [showModal, setShowModal] = useState(false)
+  const [showModal, setShowModal] = useState(false);
 
   return (
     <div className="App">
-      <header className="App-header">
+      <div className="App-header">
         <Button action={() => setShowModal(!showModal)} value="Show wallet selector" />
         <WalletSelector modalCloseClicked={() => setShowModal(false)}
-                        showWallets={["coinbase", "metamask", "gnosis"]}
+                        showWallets={[ConnectorsNames.Metamask, ConnectorsNames.Coinbase, ConnectorsNames.GnosisSafe]}
                         showModal={showModal} />
-      </header>
+      </div>
     </div>
   );
 }

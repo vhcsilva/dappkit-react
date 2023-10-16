@@ -1,17 +1,37 @@
-import {WalletSelectorProps} from "../../types/wallet-selector";
+import {ModalModes, WalletSelectorProps} from "../../types/wallet-selector";
 import {useDappkit, useDappkitConnectionInfo} from "../../custom-hooks/use-dappkit";
 import {provider as Provider} from "web3-core";
 import {CoinbaseCard} from "../connector-card/coinbase-card";
 import {MetamaskCard} from "../connector-card/metamask-card";
 import {GnosisSafeCard} from "../connector-card/gnosis-safe-card";
 import React from "react";
-import {GridCol, GridContainer, GridRow, Modal} from "@taikai/rocket-kit";
-import styled from "styled-components";
+import {GridCol, GridContainer, GridRow, Modal, ModalDrawer} from "@taikai/rocket-kit";
+import styled, {createGlobalStyle} from "styled-components";
+import {ConnectorsNames} from "../../types/connectors";
 
-const WalletList = styled(GridRow)`flex-wrap: wrap;`;
-const WalletCard = styled(GridCol)`display: inline-flex; justify-content: center;`;
+const GlobalStyles = createGlobalStyle
+  `html {
+    --vh: 10px !important;
+  }`;
 
-export function WalletSelector({showWallets, showModal, modalCloseClicked = (() => {}), modalTitle}: WalletSelectorProps) {
+const GridRowFlexWrap =
+  styled(GridRow)`
+    flex-wrap: wrap;
+    ${(props: { variant: ModalModes }) => props.variant === ModalModes.Modal ? "gap: 10px" : ""}
+  `;
+
+const GridColNoGrowVariant =
+  styled(GridCol)`
+    ${(props: { variant: ModalModes }) => props.variant === ModalModes.Modal ? "flex-grow: 0" : ""}
+  `;
+
+export function WalletSelector({
+                                 showWallets,
+                                 showModal,
+                                 modalCloseClicked = (() => {}),
+                                 modalTitle,
+                                 mode = ModalModes.Sidebar
+                               }: WalletSelectorProps) {
   const {setProvider, initializeConnection} =
     useDappkit(({setProvider, initializeConnection}) =>
       ({setProvider, initializeConnection}));
@@ -29,24 +49,41 @@ export function WalletSelector({showWallets, showModal, modalCloseClicked = (() 
     window.location.reload();
   }
 
-  return (
+  function renderModalChildren() {
+    return <GridContainer>
+      <GridRow>
+        <GridCol className="wallet-connected-address">{address}</GridCol>
+      </GridRow>
+      {!showWallets.length ? <GridRow><GridCol>No allowed list provided</GridCol></GridRow> : null}
+      <GridRowFlexWrap variant={mode}>
+        {showWallets.includes(ConnectorsNames.Coinbase) ?
+          <GridColNoGrowVariant variant={mode}
+                                children={<CoinbaseCard variant={mode}
+                                                        onConnectorConnect={onConnectorConnect}
+                                                        onConnectorDisconnect={onConnectorDisconnect}/>}/> : null}
+        {showWallets.includes(ConnectorsNames.Metamask) ?
+          <GridColNoGrowVariant variant={mode}
+                                children={<MetamaskCard variant={mode}
+                                                        onConnectorConnect={onConnectorConnect}
+                                                        onConnectorDisconnect={onConnectorDisconnect}/>}/> : null}
+        {showWallets.includes(ConnectorsNames.GnosisSafe) ?
+          <GridColNoGrowVariant variant={mode}
+                                children={<GnosisSafeCard variant={mode}
+                                                          onConnectorConnect={onConnectorConnect}
+                                                          onConnectorDisconnect={onConnectorDisconnect}/>}/> : null}
+      </GridRowFlexWrap>
+    </GridContainer>
+  }
+
+  return <>
+    <GlobalStyles/>
     <div className="wallet-selector-container">
-      <Modal isShowing={showModal} hide={modalCloseClicked} title={modalTitle || "Select a wallet"} footer={false}>
-        <GridContainer>
-          <GridRow>
-            <GridCol className="wallet-connected-address">{address}</GridCol>
-          </GridRow>
-          {!showWallets.length ? <GridRow><GridCol>No allowed list provided</GridCol></GridRow> : null}
-          <WalletList>
-            {showWallets.includes("coinbase") ? <WalletCard><CoinbaseCard onConnectorConnect={onConnectorConnect} onConnectorDisconnect={onConnectorDisconnect}/></WalletCard> : null}
-            {showWallets.includes("metamask") ? <WalletCard><MetamaskCard onConnectorConnect={onConnectorConnect} onConnectorDisconnect={onConnectorDisconnect}/></WalletCard> : null}
-            {showWallets.includes("gnosis") ? <WalletCard><GnosisSafeCard onConnectorConnect={onConnectorConnect} onConnectorDisconnect={onConnectorDisconnect}/></WalletCard> : null}
-          </WalletList>
-        </GridContainer>
-      </Modal>
-
-
-
+      {mode === ModalModes.Modal
+        ? <Modal isShowing={showModal} hide={modalCloseClicked} title={modalTitle || "Select a wallet"}
+                 children={renderModalChildren()} footer={false}/>
+        : <ModalDrawer isShowing={showModal} hide={modalCloseClicked} title={modalTitle || "Select a wallet"}
+                       children={renderModalChildren()}/>
+      }
     </div>
-  );
+  </>
 }

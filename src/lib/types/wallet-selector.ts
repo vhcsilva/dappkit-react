@@ -1,6 +1,14 @@
+import {ConnectorsNames} from "./connectors";
+
+export enum ModalModes {
+  Modal = "modal",
+  Sidebar = "sidebar"
+}
+
 export type WalletSelectorProps = {
-  showWallets: ("coinbase" | "metamask" | "gnosis" | "wallet-connect2")[];
+  showWallets: ConnectorsNames[];
   showModal: boolean;
   modalCloseClicked:() => void
-  modalTitle?: string
+  modalTitle?: string;
+  mode?: ModalModes
 }

@@ -1,24 +1,21 @@
 import {CustomConnectorCardProps} from "../../../types/connector-card";
 import {useConnectorHooks} from "../../../custom-hooks/use-connector-hooks";
-import {useConnectEagerly} from "../../../custom-hooks/use-connect-eagerly";
-import {ConnectorCard} from "../index";
-import {Chains} from "../../../connectors/chains";
-import {metamaskWallet, hooks} from "../../../connectors/metamask-wallet";
+import {hooks, metamaskWallet} from "../../../connectors/metamask-wallet";
 import {useDappkitConnectionInfo} from "../../../custom-hooks/use-dappkit";
+import Logo from "./logo.svg";
+import {ConnectorButton} from "../../connector-button";
 
-export function MetamaskCard({onConnectorConnect, onConnectorDisconnect}: CustomConnectorCardProps) {
-  const {isActivating, isActive, error, setError} = useConnectorHooks(hooks);
+export function MetamaskCard({onConnectorConnect, onConnectorDisconnect, variant}: CustomConnectorCardProps) {
+  const {isActive, error, setError} = useConnectorHooks(hooks);
   const {chainId, connected} = useDappkitConnectionInfo();
 
-  useConnectEagerly(metamaskWallet);
-
-  return <ConnectorCard connector={metamaskWallet}
-                        chainIds={Chains}
-                        activeChainId={chainId || 0}
-                        isActivating={isActivating}
-                        onConnectorConnect={onConnectorConnect}
-                        onConnectorDisconnect={onConnectorDisconnect}
-                        isActive={connected && isActive}
-                        setError={setError}
-                        error={error} />
+  return <ConnectorButton connector={metamaskWallet}
+                          logo={<Logo/>}
+                          variant={variant}
+                          activeChainId={chainId || 0}
+                          onConnectorConnect={onConnectorConnect}
+                          onConnectorDisconnect={onConnectorDisconnect}
+                          isActive={connected && isActive}
+                          setError={setError}
+                          error={error}/>
 }

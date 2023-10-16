@@ -13,5 +13,10 @@ module.exports = function override(config, env) {
     zlib: false
   }
 
+  config.module.rules[1].oneOf.splice(0, 0, {
+    test: /\.svg$/,
+    use: ["@svgr/webpack"],
+  });
+
   return config;
 }
