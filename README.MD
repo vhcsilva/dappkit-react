@@ -18,14 +18,26 @@ const {address, chainId, connected} = useDappkitConnectionInfo();
 ```
 
 ### Wallet selector
+
 ```tsx
+import {WalletSelector, ConnectorsNames} from "@layerx-labs/dappkit-react";
+
 const [showModal, setShowModal] = useState(false);
 // .. your component
 <WalletSelector modalCloseClicked={() => setShowModal(false)}
-                showWallets={["coinbase", "metamask", "gnosis"]}
-                showModal={showModal} />
+                showWallets={[ConnectorsNames.Metamask, ConnectorsNames.Coinbase]}
+                showModal={showModal}/>
 ```
 > On wallet selection, `WalletSelector` component will update the values of useDappkitConnection/Info()
+
+**Supported Wallets**
+
+| wallet            | `ConnectorsNames`  |
+|:------------------|:-------------------|
+| Coinbase          | Coinbase           |
+| Metamask          | Metamask           |
+| Safe              | GnosisSafe         |
+| Wallet Connect v2 | WalletConnect      |
 
 ### Sharing your connection with other dappkit classes
 
@@ -46,7 +58,7 @@ function useERC20(tokenAddress: string) {
     }
 
     setToken(new ERC20(connection, "0xTokenAddress"));
-  });
+  }, [connection]);
 
   function sendToken(amount: number, address: string) {
     if (!token)
