@@ -1,6 +1,6 @@
 import {CustomConnectorButtonProps} from "../../../types/custom-connector-button";
 import {useConnectorHooks} from "../../../custom-hooks/use-connector-hooks";
-import {hooks, metamaskWallet} from "../../../connectors/metamask-wallet";
+import {hooks, metamaskWallet} from "../../../connectors/wallets/metamask-wallet";
 import {useDappkitConnectionInfo} from "../../../custom-hooks/use-dappkit";
 import Logo from "./logo.svg";
 import {ConnectorButton} from "../index";

@@ -1,6 +1,6 @@
 import {Connector} from "@web3-react/types";
 import {CoinbaseWallet} from "@web3-react/coinbase-wallet";
-import {ConnectorsNames} from "../types/connectors";
+import {ConnectorsNames} from "../../types/connectors";
 import {MetaMask} from "@web3-react/metamask";
 import {GnosisSafe} from "@web3-react/gnosis-safe";
 

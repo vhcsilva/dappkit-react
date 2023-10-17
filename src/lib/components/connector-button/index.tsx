@@ -1,7 +1,7 @@
 import type {ConnectorButtonProps} from "../../types/connector-button";
 import {useCallback, useState} from "react";
 import {provider as Provider} from "web3-core";
-import {getConnectorName} from "../../connectors/get-connector-name";
+import {getConnectorName} from "../../connectors/wallets/get-connector-name";
 import styled from "styled-components";
 import {ModalModes} from "../../types/wallet-selector";
 

@@ -1,4 +1,4 @@
-import {coinbaseWallet, hooks} from "../../../connectors/coinbase-wallet";
+import {coinbaseWallet, hooks} from "../../../connectors/wallets/coinbase-wallet";
 import {useConnectorHooks} from "../../../custom-hooks/use-connector-hooks";
 import {CustomConnectorButtonProps} from "../../../types/custom-connector-button";
 import {useDappkitConnectionInfo} from "../../../custom-hooks/use-dappkit";

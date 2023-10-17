@@ -1,6 +1,6 @@
 import {CoinbaseWallet} from "@web3-react/coinbase-wallet";
 import {initializeConnector} from "@web3-react/core";
-import {Chains} from "./chains";
+import {Chains} from "../utils/chains";
 
 export const [coinbaseWallet, hooks] =
   initializeConnector<CoinbaseWallet>((actions) =>

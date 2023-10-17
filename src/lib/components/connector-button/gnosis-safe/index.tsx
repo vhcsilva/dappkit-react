@@ -1,7 +1,7 @@
 import {useConnectorHooks} from "../../../custom-hooks/use-connector-hooks";
 import {CustomConnectorButtonProps} from "../../../types/custom-connector-button";
 import {useDappkitConnectionInfo} from "../../../custom-hooks/use-dappkit";
-import {gnosisSafe, hooks} from "../../../connectors/gnosis-safe";
+import {gnosisSafe, hooks} from "../../../connectors/wallets/gnosis-safe";
 import {ConnectorButton} from "../index";
 import Logo from "./logo.svg";
 
