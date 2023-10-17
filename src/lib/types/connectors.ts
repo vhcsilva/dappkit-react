@@ -1,5 +1,6 @@
 export enum ConnectorsNames {
   Coinbase = "Coinbase",
   Metamask = "Metamask",
-  GnosisSafe = "GnosisSafe"
+  GnosisSafe = "GnosisSafe",
+  WalletConnect = "WalletConnect",
 }

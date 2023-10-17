@@ -7,6 +7,7 @@ import {useEffect, useState} from "react";
 type UseDappkit = {
   setProvider(p: Provider): void,
   initializeConnection(): void,
+  disconnect(): void,
   provider: Provider|null,
   connection: Web3Connection|null
 }
@@ -17,6 +18,14 @@ export const useDappkit = create<UseDappkit>((set, get) => ({
   initializeConnection: () =>
     set(() =>
       ({connection: new Web3Connection({web3CustomProvider: get().provider})})),
+  disconnect: () => {
+    if (!get().provider)
+      return;
+    if (get().provider?.hasOwnProperty("disconnect"))
+      (get().provider as any)?.disconnect();
+
+    set(() => ({connection: null, provider: null}))
+  },
   provider: null,
   connection: null,
 }))

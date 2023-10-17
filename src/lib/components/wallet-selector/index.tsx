@@ -8,6 +8,7 @@ import React from "react";
 import {GridCol, GridContainer, GridRow, Modal, ModalDrawer} from "@taikai/rocket-kit";
 import styled, {createGlobalStyle} from "styled-components";
 import {ConnectorsNames} from "../../types/connectors";
+import {WalletConnectButton} from "../connector-button/wallect-connect";
 
 const GlobalStyles = createGlobalStyle
   `html {
@@ -28,7 +29,8 @@ const GridColNoGrowVariant =
 export function WalletSelector({
                                  showWallets,
                                  showModal,
-                                 modalCloseClicked = (() => {}),
+                                 modalCloseClicked = (() => {
+                                 }),
                                  modalTitle,
                                  mode = ModalModes.Sidebar
                                }: WalletSelectorProps) {
@@ -71,6 +73,11 @@ export function WalletSelector({
                                 children={<GnosisSafeButton variant={mode}
                                                             onConnectorConnect={onConnectorConnect}
                                                             onConnectorDisconnect={onConnectorDisconnect}/>}/> : null}
+        {showWallets.includes(ConnectorsNames.WalletConnect) ?
+          <GridColNoGrowVariant variant={mode}
+                                children={<WalletConnectButton variant={mode}
+                                                               onConnectorConnect={onConnectorConnect}
+                                                               onConnectorDisconnect={onConnectorDisconnect}/>}/> : null}
       </GridRowFlexWrap>
     </GridContainer>
   }
