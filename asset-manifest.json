@@ -1,13 +1,17 @@
 {
   "files": {
     "main.css": "/dappkit-react/static/css/main.12cbf22b.css",
-    "main.js": "/dappkit-react/static/js/main.cfd29e4a.js",
+    "main.js": "/dappkit-react/static/js/main.00676e62.js",
+    "static/js/765.aa98fb01.chunk.js": "/dappkit-react/static/js/765.aa98fb01.chunk.js",
+    "static/js/851.7a78999a.chunk.js": "/dappkit-react/static/js/851.7a78999a.chunk.js",
     "index.html": "/dappkit-react/index.html",
     "main.12cbf22b.css.map": "/dappkit-react/static/css/main.12cbf22b.css.map",
-    "main.cfd29e4a.js.map": "/dappkit-react/static/js/main.cfd29e4a.js.map"
+    "main.00676e62.js.map": "/dappkit-react/static/js/main.00676e62.js.map",
+    "765.aa98fb01.chunk.js.map": "/dappkit-react/static/js/765.aa98fb01.chunk.js.map",
+    "851.7a78999a.chunk.js.map": "/dappkit-react/static/js/851.7a78999a.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.12cbf22b.css",
-    "static/js/main.cfd29e4a.js"
+    "static/js/main.00676e62.js"
   ]
 }
