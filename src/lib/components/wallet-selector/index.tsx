@@ -31,7 +31,7 @@ export function WalletSelector({
                                  showModal,
                                  modalCloseClicked = (() => {
                                  }),
-                                 modalTitle,
+                                 modalTitle = "Select a wallet",
                                  mode = ModalModes.Sidebar
                                }: WalletSelectorProps) {
   const {setProvider, initializeConnection} =
@@ -86,9 +86,9 @@ export function WalletSelector({
     <GlobalStyles/>
     <div className="wallet-selector-container">
       {mode === ModalModes.Modal
-        ? <Modal isShowing={showModal} hide={modalCloseClicked} title={modalTitle || "Select a wallet"}
+        ? <Modal isShowing={showModal} hide={modalCloseClicked} title={modalTitle}
                  children={renderModalChildren()} footer={false}/>
-        : <ModalDrawer isShowing={showModal} hide={modalCloseClicked} title={modalTitle || "Select a wallet"}
+        : <ModalDrawer isShowing={showModal} hide={modalCloseClicked} title={modalTitle}
                        children={renderModalChildren()}/>
       }
     </div>

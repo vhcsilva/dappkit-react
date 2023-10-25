@@ -40,6 +40,7 @@ export function ConnectorButton({activeChainId, setError, connector, isActive, e
         else throw new Error(`Failed to get a provider, make sure your connector has one!`)
 
       } catch (e: any) {
+        connector?.resetState?.();
         setError(e);
       }
     }, [connector, activeChainId, setError, onConnectorConnect]
@@ -67,7 +68,7 @@ export function ConnectorButton({activeChainId, setError, connector, isActive, e
       ? error
         ? (<Action variant={variant} onClick={() => retry()} children="try again?"/>)
         : (<Action variant={variant} onClick={() => onDisconnectClick()} children="Disconnect"/>)
-      : (<Action variant={variant} onClick={() => onSelectChain(1)} children={error ? "try again?" : <>{logo} {getConnectorName(connector)}</>}/>)
+      : (<Action variant={variant} onClick={() => onSelectChain(1)} children={error ? "try again?" : <>{logo} {getConnectorName(connector) || "Unnamed Implementation"}</>}/>)
     }
   </div>
 }

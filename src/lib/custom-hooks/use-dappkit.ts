@@ -2,7 +2,7 @@ import {create} from "zustand";
 import type {provider as Provider} from "web3-core";
 import {Web3Connection} from "@taikai/dappkit";
 import {useShallow} from "zustand/react/shallow";
-import {useEffect, useState} from "react";
+import {useCallback, useEffect, useState} from "react";
 
 type UseDappkit = {
   setProvider(p: Provider): void,
@@ -39,21 +39,23 @@ export const useDappkitConnectionInfo = () => {
   const [connected, setConnected] = useState<boolean>(false);
   const {connection} = useDappkitConnection();
 
-  useEffect(() => {
-    if (!connection) {
-      setAddress("");
-      setChainId(0);
-      setConnected(false);
-      return;
-    }
+  const connect = useCallback(
+    async () => {
+      if (!connection) {
+        setAddress("");
+        setChainId(0);
+        setConnected(false);
+        return;
+      }
 
-    (async () => {
       const _address = await connection.getAddress();
       setChainId(await connection.getETHNetworkId())
       setAddress(_address);
       setConnected(!!_address);
-    })()
-  }, [connection])
+    }, [connection]
+  )
+
+  useEffect(() => { connect() }, [connection])
 
   return {chainId, address, connected}
 }
