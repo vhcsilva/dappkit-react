@@ -28,6 +28,8 @@ export function ConnectorButton({activeChainId, setError, connector, isActive, e
   const switchChain = useCallback(
     async (_desiredChainId?: number) => {
 
+      console.log(`switchingChain to`, _desiredChainId)
+
       try {
         if ((_desiredChainId === activeChainId) || (_desiredChainId === -1 && activeChainId !== undefined)) {
           setError(undefined);
@@ -35,6 +37,7 @@ export function ConnectorButton({activeChainId, setError, connector, isActive, e
         }
 
         await connector.activate(_desiredChainId);
+        console.log(`activated`)
         if (connector.provider)
           onConnectorConnect?.(connector.provider as unknown as Provider);
         else throw new Error(`Failed to get a provider, make sure your connector has one!`)
@@ -42,6 +45,7 @@ export function ConnectorButton({activeChainId, setError, connector, isActive, e
       } catch (e: any) {
         connector?.resetState?.();
         setError(e);
+        console.log(`caught`)
       }
     }, [connector, activeChainId, setError, onConnectorConnect]
   )
