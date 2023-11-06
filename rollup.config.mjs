@@ -22,12 +22,8 @@ export default [
       }
     ],
     external: [
-      /\@web3-react.+/,
-      /zustand(.+)?/,
-      "@taikai/dappkit",
-      "@taikai/rocket-kit",
-      /react(.+)?/,
-      /styl(is|ed-components)/,
+      ...Object.keys(pkg.dependencies || {}),
+      ...Object.keys(pkg.peerDependencies || {}),
     ],
   },
 ]
