@@ -34,7 +34,7 @@ var ModalModes;
     ModalModes["Sidebar"] = "sidebar";
 })(ModalModes || (ModalModes = {}));
 
-const Action = styled("button") `
+const Action = styled.button `
     width: ${(props) => props.variant === ModalModes.Sidebar ? 392 : 163}px;
     height: 36px;
     padding: 10px;

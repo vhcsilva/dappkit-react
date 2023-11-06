@@ -6,7 +6,7 @@ import styled from "styled-components";
 import {ModalModes} from "../../types/wallet-selector";
 
 const Action =
-  styled("button")`
+  styled.button`
     width: ${(props: {variant: ModalModes}) => props.variant === ModalModes.Sidebar ? 392 : 163 }px;
     height: 36px;
     padding: 10px;

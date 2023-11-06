@@ -13,6 +13,10 @@ var shallow = require('zustand/react/shallow');
 var rocketKit = require('@taikai/rocket-kit');
 var walletconnectV2 = require('@web3-react/walletconnect-v2');
 
+function _interopDefaultCompat (e) { return e && typeof e === 'object' && 'default' in e ? e : { default: e }; }
+
+var styled__default = /*#__PURE__*/_interopDefaultCompat(styled);
+
 exports.ConnectorsNames = void 0;
 (function (ConnectorsNames) {
     ConnectorsNames["Coinbase"] = "Coinbase";
@@ -36,7 +40,7 @@ var ModalModes;
     ModalModes["Sidebar"] = "sidebar";
 })(ModalModes || (ModalModes = {}));
 
-const Action = styled("button") `
+const Action = styled__default.default.button `
     width: ${(props) => props.variant === ModalModes.Sidebar ? 392 : 163}px;
     height: 36px;
     padding: 10px;
@@ -201,11 +205,11 @@ function WalletConnectButton({ onConnectorConnect, onConnectorDisconnect, varian
 const GlobalStyles = styled.createGlobalStyle `html {
     --vh: 10px !important;
   }`;
-const GridRowFlexWrap = styled(rocketKit.GridRow) `
+const GridRowFlexWrap = styled__default.default(rocketKit.GridRow) `
     flex-wrap: wrap;
     ${(props) => props.variant === ModalModes.Modal ? "gap: 10px" : ""}
   `;
-const GridColNoGrowVariant = styled(rocketKit.GridCol) `
+const GridColNoGrowVariant = styled__default.default(rocketKit.GridCol) `
     ${(props) => props.variant === ModalModes.Modal ? "flex-grow: 0" : ""}
   `;
 function WalletSelector({ showWallets, showModal, modalCloseClicked = (() => {
