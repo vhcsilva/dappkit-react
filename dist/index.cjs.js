@@ -13,9 +13,9 @@ var shallow = require('zustand/react/shallow');
 var rocketKit = require('@taikai/rocket-kit');
 var walletconnectV2 = require('@web3-react/walletconnect-v2');
 
-function _interopDefaultCompat (e) { return e && typeof e === 'object' && 'default' in e ? e : { default: e }; }
+function _interopDefault (e) { return e && e.__esModule ? e : { default: e }; }
 
-var styled__default = /*#__PURE__*/_interopDefaultCompat(styled);
+var styled__default = /*#__PURE__*/_interopDefault(styled);
 
 exports.ConnectorsNames = void 0;
 (function (ConnectorsNames) {
